@@ -1,54 +1,76 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Form Lebaran</title>
+    <title>Form Data Lebaran</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            width: 350px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #4facfe;
+            border: none;
+            color: white;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #007bff;
+        }
+    </style>
 </head>
 <body>
 
-<h2>Form Data Lebaran</h2>
+<div class="container">
+    <h2>Form Lebaran</h2>
 
-<form method="POST">
-    Nama: <br>
-    <input type="text" name="nama" required><br><br>
+    <form action="process.php" method="POST">
+        First Name:
+        <input type="text" name="first_name" required>
 
-    Alamat: <br>
-    <input type="text" name="alamat" required><br><br>
+        Last Name:
+        <input type="text" name="last_name" required>
 
-    Jumlah THR: <br>
-    <input type="number" name="thr" required><br><br>
+        Phone Number:
+        <input type="text" name="phone" required>
 
-    <button type="submit" name="submit">Submit</button>
-</form>
+        Address:
+        <input type="text" name="address" required>
 
-<hr>
-
-<?php
-class DataLebaran {
-    public $nama;
-    public $alamat;
-    public $thr;
-
-    function __construct($nama, $alamat, $thr) {
-        $this->nama = $nama;
-        $this->alamat = $alamat;
-        $this->thr = $thr;
-    }
-
-    function tampilkanData() {
-        return "
-        Nama: $this->nama <br>
-        Alamat: $this->alamat <br>
-        THR: Rp " . number_format($this->thr, 0, ',', '.') . "
-        ";
-    }
-}
-
-if(isset($_POST['submit'])) {
-    $data = new DataLebaran($_POST['nama'], $_POST['alamat'], $_POST['thr']);
-    echo "<h3>Hasil Input:</h3>";
-    echo $data->tampilkanData();
-}
-?>
+        <button type="submit">Submit</button>
+    </form>
+</div>
 
 </body>
 </html>
